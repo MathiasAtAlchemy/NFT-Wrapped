@@ -19,7 +19,6 @@ export default function Nft({}) {
   const [isLoading, setIsloading] = useState(false);
   const { address, isConnected, isDisconnected } = useAccount();
   const [chain, setChain] = useState(process.env.NEXT_PUBLIC_ALCHEMY_NETWORK);
-
   const fetchNFTs = async (pagekey) => {
     if (!pageKey) setIsloading(true);
     const endpoint = "/api/getNftsForOwner";

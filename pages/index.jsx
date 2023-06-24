@@ -5,8 +5,8 @@ export default function Home() {
   return (
     <div>
       <main className={styles.main}>
-        <InstructionsComponent></InstructionsComponent>
         <Nft></Nft>
+        <InstructionsComponent></InstructionsComponent>
       </main>
     </div>
   );
