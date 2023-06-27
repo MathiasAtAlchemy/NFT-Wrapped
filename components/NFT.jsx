@@ -19,6 +19,8 @@ export default function Nft({}) {
   const [isLoading, setIsloading] = useState(false);
   const { address, isConnected, isDisconnected } = useAccount();
   const [chain, setChain] = useState(process.env.NEXT_PUBLIC_ALCHEMY_NETWORK);
+  const [top5NFT, setTop5NFT] = useState();
+
   const fetchNFTs = async (pagekey) => {
     if (!pageKey) setIsloading(true);
     const endpoint = "/api/getNftsForOwner";
@@ -36,7 +38,6 @@ export default function Nft({}) {
         setNfts((prevState) => [...prevState, ...res.nfts]);
       } else {
         setNfts();
-        console.log("res: ", res);
         setNfts(res.nfts);
       }
       if (res.pageKey) {
@@ -46,23 +47,41 @@ export default function Nft({}) {
       } else {
         setPageKey();
       }
+      setIsloading(false);
+      return res.nfts;
     } catch (e) {
       console.log(e);
     }
-
-    setIsloading(false);
   };
+
+  const getPrices = async (nftArray) => {
+    const endpoint = "/api/getPricesForNFTs";
+    try {
+      const res = await fetch(endpoint, {
+        method: "POST",
+        body: JSON.stringify({
+          nftArray,
+        }),
+      }).then((res) => res.json());
+      setTop5NFT(res.top5);
+      setNfts(res.nfts);
+      console.log("top5", res.top5);
+      //   console.log(res.nfts);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   function handleChange(e) {
     setWalletAddress(e.target.value);
   }
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
-    fetchNFTs(pageKey);
+    const alchemyResponse = await fetchNFTs(pageKey);
+    await getPrices(alchemyResponse);
+    // setNfts(prices);
   }
-  useEffect(() => {
-    console.log(walletAddress);
-  }, [walletAddress]);
 
   return (
     <div>
@@ -76,10 +95,14 @@ export default function Nft({}) {
       {isLoading ? (
         <div>No NFTs</div>
       ) : (
-        <div>
+        <div className={styles.nft_text}>
           {nfts?.length ? (
             nfts.map((nft, index) => {
-              return <div key={index}>{nft.title}</div>;
+              return (
+                <div key={index}>
+                  {nft.title} ---------- ${nft.price}
+                </div>
+              );
             })
           ) : (
             <div>isLoading Value {`${isLoading}`}</div>

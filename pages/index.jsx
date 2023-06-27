@@ -6,7 +6,7 @@ export default function Home() {
     <div>
       <main className={styles.main}>
         <Nft></Nft>
-        <InstructionsComponent></InstructionsComponent>
+        {/* <InstructionsComponent></InstructionsComponent> */}
       </main>
     </div>
   );

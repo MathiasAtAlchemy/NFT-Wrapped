@@ -5,6 +5,10 @@
   row-gap: 3rem;
 }
 
+.nft_text {
+  color: white;
+}
+
 .nft_gallery {
   display: flex;
   flex-direction: column;

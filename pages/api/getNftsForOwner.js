@@ -40,13 +40,11 @@ export default async function handler(req, res) {
         format: media[0]?.format ? media[0]?.format : "png",
       };
     });
-    console.log("NFT COUNT", formattedNfts.length);
     if (excludeFilter) {
       const filteredNfts = formattedNfts.filter(
         (nft) => nft.title.length && nft.description.length && nft.media
       );
       if (filteredNfts) {
-        // console.log("test2");
         console.log("filteredNFTS: ", filteredNfts);
         res.status(200).json({
           nfts: filteredNfts.length ? filteredNfts : null,
