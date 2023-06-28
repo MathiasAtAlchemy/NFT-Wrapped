@@ -13,7 +13,6 @@ export default function Nft({}) {
   const [chain, setChain] = useState(process.env.NEXT_PUBLIC_ALCHEMY_NETWORK);
   const [top5NFT, setTop5NFT] = useState();
 
-  //TODO add pagination
   const fetchNFTs = async (pagekey) => {
     if (!pageKey) setIsloading(true);
     const endpoint = "/api/getNftsForOwner";
