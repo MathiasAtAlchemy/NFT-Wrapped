@@ -1,16 +1,8 @@
-// Importing necessary modules and components
 import styles from "../styles/Nft.module.css";
 import { useEffect, useState } from "react";
 import { useAccount } from "wagmi";
 
-/*
-
-
-*/
-
-// Defining the main component of the NFT gallery
 export default function Nft({}) {
-  // Defining states for the component
   const [nfts, setNfts] = useState();
   const [walletAddress, setWalletAddress] = useState("");
   const [fetchMethod, setFetchMethod] = useState("wallet");
@@ -21,6 +13,7 @@ export default function Nft({}) {
   const [chain, setChain] = useState(process.env.NEXT_PUBLIC_ALCHEMY_NETWORK);
   const [top5NFT, setTop5NFT] = useState();
 
+  //TODO add pagination
   const fetchNFTs = async (pagekey) => {
     if (!pageKey) setIsloading(true);
     const endpoint = "/api/getNftsForOwner";
@@ -42,11 +35,10 @@ export default function Nft({}) {
       }
       if (res.pageKey) {
         setPageKey(res.pageKey);
-        //Is this recursively good idea?
-        // fetchNFTs(pageKey);
       } else {
         setPageKey();
       }
+
       setIsloading(false);
       return res.nfts;
     } catch (e) {
@@ -65,8 +57,6 @@ export default function Nft({}) {
       }).then((res) => res.json());
       setTop5NFT(res.top5);
       setNfts(res.nfts);
-      console.log("top5", res.top5);
-      //   console.log(res.nfts);
     } catch (error) {
       console.log(error);
     }
@@ -80,7 +70,6 @@ export default function Nft({}) {
     e.preventDefault();
     const alchemyResponse = await fetchNFTs(pageKey);
     await getPrices(alchemyResponse);
-    // setNfts(prices);
   }
 
   return (
@@ -107,6 +96,27 @@ export default function Nft({}) {
           ) : (
             <div>isLoading Value {`${isLoading}`}</div>
           )}
+        </div>
+      )}
+
+      {pageKey && nfts?.length && (
+        <div>
+          <a
+            className={styles.button_black}
+            onClick={() => {
+              fetchNFTs(pageKey);
+            }}
+          >
+            Load more
+          </a>
+          <a
+            className={styles.button_black}
+            onClick={() => {
+              getPrices(nfts);
+            }}
+          >
+            Get Prices
+          </a>
         </div>
       )}
     </div>
