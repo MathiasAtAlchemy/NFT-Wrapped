@@ -3,20 +3,26 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p 3001",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "marketplace": "npx create-web3-dapp marketplace"
+    "marketplace": "npx create-web3-dapp marketplace",
+    "video": "remotion preview Remotion/index.ts"
   },
   "dependencies": {
     "@rainbow-me/rainbowkit": "^0.12.4",
+    "@remotion/cli": "^3.3.102",
+    "@remotion/player": "^3.3.102",
+    "@types/styled-components": "^5.1.26",
     "alchemy-sdk": "^2.6.2",
     "api": "^6.0.0",
     "dotenv": "^16.3.1",
     "next": "13.1.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "remotion": "^3.3.102",
+    "styled-components": "^6.0.1",
     "wagmi": "^0.12.6"
   },
   "devDependencies": {

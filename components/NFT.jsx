@@ -1,6 +1,9 @@
 import styles from "../styles/Nft.module.css";
 import { useEffect, useState } from "react";
 import { useAccount } from "wagmi";
+import { Player } from "@remotion/player";
+import { MyVideo } from "../Remotion/Root";
+import { Scene3 } from "../Remotion/Scene3";
 
 export default function Nft({}) {
   const [nfts, setNfts] = useState();
@@ -121,3 +124,20 @@ export default function Nft({}) {
     </div>
   );
 }
+
+export const Video = () => {
+  return (
+    <Player
+      component={Scene3}
+      durationInFrames={120}
+      compositionWidth={720}
+      compositionHeight={1280}
+      fps={30}
+      style={{
+        width: 720,
+        height: 1280,
+      }}
+      controls
+    />
+  );
+};
