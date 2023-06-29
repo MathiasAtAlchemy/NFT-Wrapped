@@ -1,4 +1,10 @@
-import { AbsoluteFill, useVideoConfig } from "remotion";
+import {
+  AbsoluteFill,
+  interpolate,
+  spring,
+  useCurrentFrame,
+  useVideoConfig,
+} from "remotion";
 import React from "react";
 import { styled } from "styled-components";
 
@@ -38,71 +44,140 @@ const Row = styled.div`
   text-shadow: 0 0 6px rgba(0, 0, 0, 0.4);
 `;
 
+//#D81B9A
+//#C244F1
+//#D87DFB
+//#EF4444
+
+const TOTAL_RANKS = 5;
+
 // Can make components of row/bar/div
 export const Scene2 = () => {
-  const { width } = useVideoConfig();
+  const { width, fps } = useVideoConfig();
+  const frame = useCurrentFrame();
+  const opacity = interpolate(
+    frame - (TOTAL_RANKS - 5) * 3 - 10,
+    [0, 8],
+    [0, 1]
+  );
+
+  const animatedWidthProgress = spring({
+    frame,
+    fps,
+    config: {
+      damping: 200,
+    },
+  });
+  const animatedWidth = interpolate(
+    animatedWidthProgress,
+    [0, 1],
+    [0, width + 100]
+  );
+
   return (
     <AbsoluteFill
       style={{
-        background: "#EF4444",
+        background: "#D81B9A",
       }}
     >
       <Title>Your top NFTs</Title>
       <div style={{ height: 250 }} />
       <Row>
         <Bar
-          style={{ backgroundColor: "#78D3FF", width: `${width / 2 + 100}px` }}
+          style={{
+            backgroundColor: "#78D3FF",
+            width: interpolate(
+              animatedWidthProgress,
+              [0, 1],
+              [0, width / 2 + 100]
+            ),
+            opacity: interpolate(
+              frame - (TOTAL_RANKS - 1) * 3 - 10,
+              [0, 8],
+              [0, 1]
+            ),
+          }}
         />
         <div style={{ width: 40, marginLeft: "20px" }}>
-          #Rank <br /> NFT1
+          #1 <br /> NFT1
         </div>
       </Row>
       <Row>
         <Bar
-          style={{ backgroundColor: "#73FCC2", width: `${width / 2 + 40}px` }}
+          style={{
+            backgroundColor: "#73FCC2",
+            width: interpolate(
+              animatedWidthProgress,
+              [0, 1],
+              [0, width / 2 + 50]
+            ),
+            opacity: interpolate(
+              frame - (TOTAL_RANKS - 2) * 3 - 10,
+              [0, 8],
+              [0, 1]
+            ),
+          }}
         />
         <div style={{ width: 40, marginLeft: "20px" }}>
-          #Rank <br /> NFT1
+          #2 <br /> NFT2
         </div>
       </Row>
       <Row>
         <Bar
-          style={{ backgroundColor: "#363FF9", width: `${width / 2 - 20}px` }}
+          style={{
+            backgroundColor: "#363FF9",
+            width: interpolate(animatedWidthProgress, [0, 1], [0, width / 2]),
+            opacity: interpolate(
+              frame - (TOTAL_RANKS - 3) * 3 - 10,
+              [0, 8],
+              [0, 1]
+            ),
+          }}
         />
         <div style={{ width: 40, marginLeft: "20px" }}>
-          #Rank <br /> NFT1
+          #3 <br /> NFT3
         </div>
       </Row>
       <Row>
         <Bar
-          style={{ backgroundColor: "#020617", width: `${width / 2 - 80}px` }}
+          style={{
+            backgroundColor: "#020617",
+            width: interpolate(
+              animatedWidthProgress,
+              [0, 1],
+              [0, width / 2 - 50]
+            ),
+            opacity: interpolate(
+              frame - (TOTAL_RANKS - 4) * 3 - 10,
+              [0, 8],
+              [0, 1]
+            ),
+          }}
         />
         <div style={{ width: 40, marginLeft: "20px" }}>
-          #Rank <br /> NFT1
+          #4 <br /> NFT4
         </div>
       </Row>
       <Row>
         <Bar
           style={{
             backgroundColor: "#FFFFFF",
-            width: `${width / 2 - 140}px`,
+            width: interpolate(
+              animatedWidthProgress,
+              [0, 1],
+              [0, width / 2 - 100]
+            ),
+            opacity: interpolate(
+              frame - (TOTAL_RANKS - 5) * 3 - 10,
+              [0, 8],
+              [0, 1]
+            ),
           }}
         />
         <div style={{ width: 40, marginLeft: "20px" }}>
-          #Rank <br /> NFT1
+          #5 <br /> NFT5
         </div>
       </Row>
     </AbsoluteFill>
   );
 };
-
-/*
-
-      <Bar style={{ color: "#73FCC2" }} />
-      <Bar style={{ color: "#363FF9" }} />
-      <Bar style={{ color: "#020617" }} />
-      <Bar style={{ color: "#FFFFFF" }} />
-
-*/
-
-//linear-gradient(to bottom, #4C1D95, #1F2937)
