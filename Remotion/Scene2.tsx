@@ -48,6 +48,8 @@ const Row = styled.div`
 //#C244F1
 //#D87DFB
 //#EF4444
+//#4C1D95
+//#5800F7
 
 const TOTAL_RANKS = 5;
 
@@ -77,7 +79,7 @@ export const Scene2 = () => {
   return (
     <AbsoluteFill
       style={{
-        background: "#D81B9A",
+        background: "#C244F1",
       }}
     >
       <Title>Your top NFTs</Title>

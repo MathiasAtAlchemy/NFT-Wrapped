@@ -3,6 +3,9 @@ import { Gradient } from "./Gradient";
 import { Scene3 } from "./Scene3";
 import React from "react";
 import { Scene2 } from "./Scene2";
+import { Scene2Test } from "./Scene2Test";
+import { Main } from "./Main";
+import { Scene1 } from "./Scene1";
 
 export const MyVideo = () => {
   return (
@@ -17,12 +20,37 @@ export const MyVideo = () => {
         defaultProps={{ height: "1280" }}
       />
       <Composition
+        id="Scene1"
+        component={Scene1}
+        durationInFrames={120}
+        width={720}
+        height={1280}
+        fps={30}
+      />
+      <Composition
         id="Scene2"
         component={Scene2}
         durationInFrames={150}
         width={720}
         height={1280}
         fps={30}
+      />
+      <Composition
+        id="Scene2Test"
+        component={Scene2Test}
+        width={720}
+        height={1280}
+        durationInFrames={210}
+        fps={30}
+        defaultProps={{
+          ranking: ["NFT1", "NFT2", "NFT3", "NFT4", "NFT5"] as [
+            string,
+            string,
+            string,
+            string,
+            string
+          ],
+        }}
       />
       <Composition
         id="Scene3"
@@ -32,6 +60,15 @@ export const MyVideo = () => {
         height={1280}
         fps={30}
         defaultProps={{ text: "World" }}
+      />
+      <Composition
+        id="Main"
+        component={Main}
+        durationInFrames={150 + 150 + 210 + 150}
+        width={720}
+        height={1280}
+        fps={30}
+        defaultProps={{ ranking: ["NFT1", "NFT2", "NFT3", "NFT4", "NFT5"] }}
       />
     </>
   );

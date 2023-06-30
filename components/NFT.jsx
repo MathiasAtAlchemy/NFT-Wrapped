@@ -58,6 +58,7 @@ export default function Nft({}) {
         }),
       }).then((res) => res.json());
       setTop5NFT(res.top5);
+      console.log("TOP5: ", res.top5);
       setNfts(res.nfts);
     } catch (error) {
       console.log(error);
