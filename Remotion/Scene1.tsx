@@ -3,6 +3,8 @@ import { AbsoluteFill, useVideoConfig, staticFile, Sequence } from "remotion";
 import { Gradient } from "./Gradient";
 import { ScaleNft } from "./ScaleNft";
 import { FourNft } from "./FourNft";
+import { GradientCircle } from "./GradientCircle";
+import { Wrapped } from "./Wrapped";
 export const Scene1: React.FC = () => {
   const { height } = useVideoConfig();
   return (
@@ -18,6 +20,12 @@ export const Scene1: React.FC = () => {
       </Sequence>
       <Sequence durationInFrames={Infinity} from={90}>
         <FourNft image={staticFile("NFTImage.jpg")} />
+      </Sequence>
+      <Sequence durationInFrames={Infinity} from={120}>
+        <GradientCircle />
+      </Sequence>
+      <Sequence durationInFrames={Infinity} from={150}>
+        <Wrapped />
       </Sequence>
     </AbsoluteFill>
   );

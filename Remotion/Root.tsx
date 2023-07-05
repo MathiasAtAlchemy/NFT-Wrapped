@@ -6,6 +6,8 @@ import { Scene2 } from "./Scene2";
 import { Scene2Test } from "./Scene2Test";
 import { Main } from "./Main";
 import { Scene1 } from "./Scene1";
+import { GradientCircle } from "./GradientCircle";
+import { Wrapped } from "./Wrapped";
 
 export const MyVideo = () => {
   return (
@@ -22,7 +24,23 @@ export const MyVideo = () => {
       <Composition
         id="Scene1"
         component={Scene1}
-        durationInFrames={120}
+        durationInFrames={210}
+        width={720}
+        height={1280}
+        fps={30}
+      />
+      <Composition
+        id="GradientCircle"
+        component={GradientCircle}
+        durationInFrames={210}
+        width={720}
+        height={1280}
+        fps={30}
+      />
+      <Composition
+        id="Wrapped"
+        component={Wrapped}
+        durationInFrames={210}
         width={720}
         height={1280}
         fps={30}
@@ -64,7 +82,7 @@ export const MyVideo = () => {
       <Composition
         id="Main"
         component={Main}
-        durationInFrames={150 + 150 + 210 + 150}
+        durationInFrames={210 + 210 + 150}
         width={720}
         height={1280}
         fps={30}
