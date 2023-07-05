@@ -1,9 +1,7 @@
 import styles from "../styles/Nft.module.css";
 import { useEffect, useState } from "react";
 import { useAccount } from "wagmi";
-import { Player } from "@remotion/player";
-import { MyVideo } from "../Remotion/Root";
-import { Scene3 } from "../Remotion/Scene3";
+import { Video } from "./Video";
 
 export default function Nft({}) {
   const [nfts, setNfts] = useState();
@@ -122,23 +120,37 @@ export default function Nft({}) {
           </a>
         </div>
       )}
+
+      {top5NFT?.length && (
+        <Video
+          ranking={[
+            `${top5NFT[0].title}`,
+            `${top5NFT[1].title}`,
+            `${top5NFT[2].title}`,
+            `${top5NFT[3].title}`,
+            `${top5NFT[4].title}`,
+          ]}
+          price={[
+            `$${top5NFT[0].price}`,
+            `$${top5NFT[1].price}`,
+            `$${top5NFT[2].price}`,
+            `$${top5NFT[3].price}`,
+            `$${top5NFT[4].price}`,
+          ]}
+        ></Video>
+      )}
     </div>
   );
 }
-
-export const Video = () => {
-  return (
-    <Player
-      component={Scene3}
-      durationInFrames={120}
-      compositionWidth={720}
-      compositionHeight={1280}
-      fps={30}
-      style={{
-        width: 720,
-        height: 1280,
-      }}
-      controls
-    />
-  );
-};
+// contract: contract.address,
+//         symbol: contract.symbol,
+//         collectionName: contract.openSea?.collectionName,
+//         media: media[0]?.gateway
+//           ? media[0]?.gateway
+//           : "https://via.placeholder.com/500",
+//         verified: contract.openSea?.safelistRequestStatus,
+//         tokenType,
+//         tokenId,
+//         title,
+//         description,
+//         format: media[0]?.format ? media[0]?.format : "png",

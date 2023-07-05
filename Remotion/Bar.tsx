@@ -10,7 +10,8 @@ type BarProps = {
 
 type Props = BarProps & {
   rank: number;
-  genre: string;
+  title: string;
+  price: string;
 };
 
 const Row = styled.div`
@@ -35,7 +36,13 @@ export const BarContainer = styled.div<BarProps>`
 
 const TOTAL_RANKS = 5;
 
-export const Bar: React.FC<Props> = ({ endWidth, color, genre, rank }) => {
+export const Bar: React.FC<Props> = ({
+  endWidth,
+  color,
+  title,
+  rank,
+  price,
+}) => {
   const frame = useCurrentFrame();
   const { fps, width } = useVideoConfig();
   const opacity = interpolate(
@@ -68,6 +75,7 @@ export const Bar: React.FC<Props> = ({ endWidth, color, genre, rank }) => {
       mass: 0.6,
     },
   });
+
   return (
     <Row style={{ width: 2000 }}>
       <BarContainer
@@ -91,7 +99,8 @@ export const Bar: React.FC<Props> = ({ endWidth, color, genre, rank }) => {
         }}
       >
         #{rank} <br />
-        {genre}
+        {title} <br />
+        {price}
       </div>
     </Row>
   );

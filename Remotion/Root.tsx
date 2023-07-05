@@ -68,6 +68,13 @@ export const MyVideo = () => {
             string,
             string
           ],
+          price: ["1", "2", "3", "4", "5"] as [
+            string,
+            string,
+            string,
+            string,
+            string
+          ],
         }}
       />
       <Composition
@@ -86,7 +93,10 @@ export const MyVideo = () => {
         width={720}
         height={1280}
         fps={30}
-        defaultProps={{ ranking: ["NFT1", "NFT2", "NFT3", "NFT4", "NFT5"] }}
+        defaultProps={{
+          ranking: ["NFT1", "NFT2", "NFT3", "NFT4", "NFT5"],
+          price: [1, 2, 3, 4, 5],
+        }}
       />
     </>
   );
