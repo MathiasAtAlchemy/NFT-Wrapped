@@ -112,7 +112,7 @@ export const MyVideo = () => {
           ranking: ["NFT1", "NFT2", "NFT3", "NFT4", "NFT5"],
           price: ["$500", "$400", "$300", "$200", "$100"],
           media: [
-            "https://dl.openseauserdata.com/cache/originImage/files/d544bedee67888d0d70077265637ee68.png",
+            staticFile("NFTImage.jpg"),
             staticFile("NFTImage3.jpg"),
             "https://dl.openseauserdata.com/cache/originImage/files/117a640b40722a28d773c8eb358128c4.png",
             "https://dl.openseauserdata.com/cache/originImage/files/32d60c14ee6393483c6cc326c48f6b63.png",
