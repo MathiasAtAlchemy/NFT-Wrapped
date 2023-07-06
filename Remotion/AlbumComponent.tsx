@@ -10,13 +10,10 @@ const Cover = styled.div`
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.7);
 `;
 
-export const Album = () => {
+export const Album = ({ image }) => {
   return (
     <Cover>
-      <Img
-        src={staticFile("NFTImage.jpg")}
-        style={{ height: COVER_SIZE, width: COVER_SIZE }}
-      />
+      <Img src={image} style={{ height: COVER_SIZE, width: COVER_SIZE }} />
     </Cover>
   );
 };

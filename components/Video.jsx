@@ -1,7 +1,7 @@
 import { Player } from "@remotion/player";
 import { Main } from "../Remotion/Main";
 
-export const Video = ({ ranking, price }) => {
+export const Video = ({ ranking, price, media, topNFT }) => {
   return (
     <Player
       component={Main}
@@ -14,7 +14,7 @@ export const Video = ({ ranking, price }) => {
         height: 1280,
       }}
       controls
-      inputProps={{ ranking, price }}
+      inputProps={{ ranking, price, media, topNFT }}
     />
   );
 };

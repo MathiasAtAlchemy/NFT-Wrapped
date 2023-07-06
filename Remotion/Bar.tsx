@@ -28,7 +28,6 @@ const Row = styled.div`
 
 export const BarContainer = styled.div<BarProps>`
   height: ${BAR_HEIGHT}px;
-  background-color: ${(props) => props.color};
   border-radius: ${BAR_HEIGHT / 2}px;
   margin-top: 10px;
   box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
@@ -83,6 +82,7 @@ export const Bar: React.FC<Props> = ({
           opacity,
           width: animatedWidth,
           marginLeft: left,
+          background: `${color}`,
         }}
         endWidth={endWidth}
         color={color}

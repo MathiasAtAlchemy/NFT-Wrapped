@@ -5,21 +5,26 @@ import { ScaleNft } from "./ScaleNft";
 import { FourNft } from "./FourNft";
 import { GradientCircle } from "./GradientCircle";
 import { Wrapped } from "./Wrapped";
-export const Scene1: React.FC = () => {
+export const Scene1: React.FC<{ media: string[]; ranking: string[] }> = ({
+  media,
+  ranking,
+}) => {
   const { height } = useVideoConfig();
   return (
     <AbsoluteFill>
       <Gradient height={height} />
 
-      <FourNft image={staticFile("NFTImage.jpg")} />
+      <Sequence durationInFrames={Infinity} from={0}>
+        <FourNft image={media[0]} />
+      </Sequence>
       <Sequence durationInFrames={Infinity} from={30}>
-        <FourNft image={staticFile("NFTImage3.jpg")} />
+        <FourNft image={media[1]} />
       </Sequence>
       <Sequence durationInFrames={Infinity} from={60}>
-        <FourNft image={staticFile("NFTImage2.jpg")} />
+        <FourNft image={media[2]} />
       </Sequence>
       <Sequence durationInFrames={Infinity} from={90}>
-        <FourNft image={staticFile("NFTImage.jpg")} />
+        <FourNft image={media[3]} />
       </Sequence>
       <Sequence durationInFrames={Infinity} from={120}>
         <GradientCircle />

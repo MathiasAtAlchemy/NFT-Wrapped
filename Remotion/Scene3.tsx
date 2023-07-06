@@ -27,6 +27,7 @@ const Title = styled.div`
   font-size: 50px;
   font-weight: 600;
   text-align: center;
+
   position: absolute;
   top: 300px;
   width: 100%;
@@ -36,7 +37,7 @@ const Title = styled.div`
 `;
 
 //TODO: Add top5 nfts prop to pass down to NFT TITLE and NFT IMAGE
-export const Scene3 = () => {
+export const Scene3 = ({ topNFT }) => {
   const frame = useCurrentFrame();
   const { width, height, fps } = useVideoConfig();
   const progress = spring({
@@ -89,7 +90,7 @@ export const Scene3 = () => {
   return (
     <AbsoluteFill
       style={{
-        background: "#1F2937",
+        background: "#0F172A",
       }}
     >
       <AbsoluteFill
@@ -97,13 +98,13 @@ export const Scene3 = () => {
       >
         <Title style={{ opacity: textOpacity }}>Your most coveted NFT</Title>
         <Title
-          style={{ top: 1030, fontSize: 20, opacity: NftCollectionOpacity }}
+          style={{ top: 1030, fontSize: 30, opacity: NftCollectionOpacity }}
         >
-          NFT COLLECTION{" "}
+          {topNFT.collectionName}
         </Title>
 
         <Title style={{ top: 1100, opacity: NftTitleOpacity }}>
-          NFT TITLE{" "}
+          {topNFT.title}
         </Title>
 
         <Circle
@@ -125,7 +126,7 @@ export const Scene3 = () => {
             transform: `scale(${coverScale})`,
           }}
         >
-          <Album />
+          <Album image={topNFT.media} />
         </div>
       </AbsoluteFill>
     </AbsoluteFill>

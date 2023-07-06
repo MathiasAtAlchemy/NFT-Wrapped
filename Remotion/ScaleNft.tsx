@@ -26,8 +26,8 @@ export const ScaleNft: React.FC<{ image: string }> = ({ image }) => {
         style={{
           position: "absolute",
           height: "100%",
-          left: "-50%",
-
+          width: "100%",
+          // left: "-50%",
           transform: `scale(${scale}) translateX(${translateX}px)`,
         }}
       ></Img>

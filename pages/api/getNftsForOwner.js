@@ -22,6 +22,7 @@ export default async function handler(req, res) {
       excludeFilters: excludeFilter && [NftFilters.SPAM],
       pageKey: pageKey ? pageKey : "",
     });
+    console.log("nfts", nfts);
 
     const formattedNfts = nfts.ownedNfts.map((nft) => {
       const { contract, title, tokenType, tokenId, description, media } = nft;

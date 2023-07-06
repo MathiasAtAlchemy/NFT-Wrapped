@@ -48,7 +48,7 @@ export const Scene2Test: React.FC<{
   );
 
   return (
-    <AbsoluteFill style={{ backgroundColor: "#d4148e" }}>
+    <AbsoluteFill style={{ backgroundColor: "#151751" }}>
       <AbsoluteFill
         style={{
           transform: `translateY(${translateY}px)`,
@@ -57,35 +57,35 @@ export const Scene2Test: React.FC<{
         <Title>Your Top 5 NFTs</Title>
         <div style={{ height: 290 }} />
         <Bar
-          color="#b2fef5"
+          color="linear-gradient(#36BEFF,#733FF1)"
           endWidth={width / 2}
           rank={1}
           title={ranking[0]}
           price={price[0]}
         />
         <Bar
-          color="#d5f772"
+          color="linear-gradient(#A7CAFF,#B25FF3)"
           endWidth={width / 2 - 40}
           rank={2}
           title={ranking[1]}
           price={price[1]}
         />
         <Bar
-          color="#4e00f9"
+          color="linear-gradient(#FC9EB4,#FFC5A4)"
           endWidth={width / 2 - 80}
           rank={3}
           title={ranking[2]}
           price={price[2]}
         />
         <Bar
-          color="#1e1416"
+          color="linear-gradient(#73FCC2,#50D5FF)"
           endWidth={width / 2 - 120}
           rank={4}
           title={ranking[3]}
           price={price[3]}
         />
         <Bar
-          color="#fefefe"
+          color="linear-gradient(#FFD27C,#FFAA8F)"
           endWidth={width / 2 - 160}
           rank={5}
           title={ranking[4]}

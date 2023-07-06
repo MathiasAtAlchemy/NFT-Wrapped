@@ -12,7 +12,7 @@ export const Gradient = ({ height }) => {
           transform: `translateY(-${offset}px)`,
           height: height * 1.5,
           background:
-            "linear-gradient(to bottom,#7FABEF, #B25FF3, #0055FF, #21D6EF,#7FABEF, #B25FF3, #7FABEF)",
+            "linear-gradient(to bottom,#7FABEF, #B25FF3, #0055FF, #21D6EF, #7FABEF)",
         }}
       ></AbsoluteFill>
 
@@ -22,7 +22,7 @@ export const Gradient = ({ height }) => {
           height: height * 1.5,
           top: height * 1.5 - 1,
           background:
-            "linear-gradient(to bottom,#7FABEF, #B25FF3, #0055FF, #21D6EF,#7FABEF, #B25FF3, #7FABEF)",
+            "linear-gradient(to bottom,#7FABEF, #B25FF3, #0055FF, #21D6EF, #7FABEF)",
         }}
       ></AbsoluteFill>
     </AbsoluteFill>

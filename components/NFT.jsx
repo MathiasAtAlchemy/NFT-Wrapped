@@ -123,20 +123,27 @@ export default function Nft({}) {
 
       {top5NFT?.length && (
         <Video
+          media={[
+            `${top5NFT[1]?.media}`,
+            `${top5NFT[2]?.media}`,
+            `${top5NFT[3]?.media}`,
+            `${top5NFT[4]?.media}`,
+          ]}
           ranking={[
-            `${top5NFT[0].title}`,
-            `${top5NFT[1].title}`,
-            `${top5NFT[2].title}`,
-            `${top5NFT[3].title}`,
-            `${top5NFT[4].title}`,
+            `${top5NFT[0]?.title}`,
+            `${top5NFT[1]?.title}`,
+            `${top5NFT[2]?.title}`,
+            `${top5NFT[3]?.title}`,
+            `${top5NFT[4]?.title}`,
           ]}
           price={[
-            `$${top5NFT[0].price}`,
-            `$${top5NFT[1].price}`,
-            `$${top5NFT[2].price}`,
-            `$${top5NFT[3].price}`,
-            `$${top5NFT[4].price}`,
+            `$${top5NFT[0]?.price}`,
+            `$${top5NFT[1]?.price}`,
+            `$${top5NFT[2]?.price}`,
+            `$${top5NFT[3]?.price}`,
+            `$${top5NFT[4]?.price}`,
           ]}
+          topNFT={top5NFT[0]}
         ></Video>
       )}
     </div>

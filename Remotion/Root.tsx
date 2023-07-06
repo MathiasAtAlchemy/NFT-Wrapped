@@ -1,4 +1,4 @@
-import { Composition } from "remotion";
+import { Composition, staticFile } from "remotion";
 import { Gradient } from "./Gradient";
 import { Scene3 } from "./Scene3";
 import React from "react";
@@ -28,6 +28,15 @@ export const MyVideo = () => {
         width={720}
         height={1280}
         fps={30}
+        defaultProps={{
+          media: [
+            staticFile("NFTImage.jpg"),
+            staticFile("NFTImage2.jpg"),
+            staticFile("NFTImage3.jpg"),
+            staticFile("NFTImage.jpg"),
+          ],
+          ranking: ["NFT1", "NFT2", "NFT3", "NFT4", "NFT5"],
+        }}
       />
       <Composition
         id="GradientCircle"
@@ -84,7 +93,13 @@ export const MyVideo = () => {
         width={720}
         height={1280}
         fps={30}
-        defaultProps={{ text: "World" }}
+        defaultProps={{
+          topNFT: {
+            media: staticFile("NFTImage.jpg"),
+            collectionName: "Azuki",
+            title: "6370",
+          },
+        }}
       />
       <Composition
         id="Main"
@@ -95,7 +110,18 @@ export const MyVideo = () => {
         fps={30}
         defaultProps={{
           ranking: ["NFT1", "NFT2", "NFT3", "NFT4", "NFT5"],
-          price: [1, 2, 3, 4, 5],
+          price: ["$500", "$400", "$300", "$200", "$100"],
+          media: [
+            staticFile("NFTImage.jpg"),
+            staticFile("NFTImage2.jpg"),
+            staticFile("NFTImage3.jpg"),
+            staticFile("NFTImage.jpg"),
+          ],
+          topNFT: {
+            media: staticFile("NFTImage.jpg"),
+            collectionName: "Azuki",
+            title: "6370",
+          },
         }}
       />
     </>

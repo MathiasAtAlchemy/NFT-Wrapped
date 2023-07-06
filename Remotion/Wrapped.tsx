@@ -43,13 +43,14 @@ export const Wrapped: React.FC = () => {
       <div style={{ flex: 1, position: "relative" }}>
         <AbsoluteFill
           style={{
-            backgroundColor: "#4C1D95",
+            backgroundColor: "#2E1065",
             boxShadow: "0 0 20px rgba(0,0,0,0.4)",
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
             transform: `scale(${scale})`,
             opacity: progress,
+            borderRadius: "15px",
           }}
         >
           <Title style={{ opacity: titleProgress }}>

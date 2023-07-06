@@ -79,7 +79,7 @@ export const Scene2 = () => {
   return (
     <AbsoluteFill
       style={{
-        background: "#C244F1",
+        background: "#151751",
       }}
     >
       <Title>Your top NFTs</Title>
