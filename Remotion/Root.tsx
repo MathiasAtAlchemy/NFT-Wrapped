@@ -36,6 +36,7 @@ export const MyVideo = () => {
             staticFile("NFTImage.jpg"),
           ],
           ranking: ["NFT1", "NFT2", "NFT3", "NFT4", "NFT5"],
+          NFTArrayObjects: [{}, {}, {}, {}, {}],
         }}
       />
       <Composition
@@ -123,6 +124,7 @@ export const MyVideo = () => {
             collectionName: "DeGods",
             title: "3251",
           },
+          NFTArrayObjects: [{}, {}, {}, {}, {}],
         }}
       />
     </>

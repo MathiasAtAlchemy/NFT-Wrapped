@@ -126,7 +126,7 @@ export const Scene3 = ({ topNFT }) => {
             transform: `scale(${coverScale})`,
           }}
         >
-          <Album image={topNFT.media} />
+          <Album image={topNFT.media} format={topNFT.format} />
         </div>
       </AbsoluteFill>
     </AbsoluteFill>

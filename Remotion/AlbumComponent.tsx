@@ -10,10 +10,20 @@ const Cover = styled.div`
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.7);
 `;
 
-export const Album = ({ image }) => {
+export const Album = ({ image, format }) => {
+  const isMP4 = format === "mp4";
   return (
     <Cover>
-      <Img src={image} style={{ height: COVER_SIZE, width: COVER_SIZE }} />
+      {isMP4 ? (
+        <video
+          src={image}
+          style={{ height: COVER_SIZE, width: COVER_SIZE }}
+          autoPlay
+          loop
+        ></video>
+      ) : (
+        <Img src={image} style={{ height: COVER_SIZE, width: COVER_SIZE }} />
+      )}
     </Cover>
   );
 };

@@ -22,7 +22,7 @@ export default async function handler(req, res) {
       excludeFilters: excludeFilter && [NftFilters.SPAM],
       pageKey: pageKey ? pageKey : "",
     });
-    console.log("nfts", nfts);
+    // console.log("nfts", nfts);
 
     const formattedNfts = nfts.ownedNfts.map((nft) => {
       const { contract, title, tokenType, tokenId, description, media } = nft;
@@ -36,14 +36,14 @@ export default async function handler(req, res) {
         verified: contract.openSea?.safelistRequestStatus,
         tokenType,
         tokenId,
-        title,
-        description,
+        title: title ? title : `${contract.openSea?.collectionName} ${tokenId}`,
+        description: description ? description : contract.openSea?.description,
         format: media[0]?.format ? media[0]?.format : "png",
       };
     });
     if (excludeFilter) {
       const filteredNfts = formattedNfts.filter(
-        (nft) => nft.title.length && nft.description.length && nft.media
+        (nft) => nft.media && nft.title && nft.description
       );
       if (filteredNfts) {
         console.log("filteredNFTS: ", filteredNfts);

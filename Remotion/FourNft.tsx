@@ -8,7 +8,10 @@ import {
 } from "remotion";
 import { ScaleNft } from "./ScaleNft";
 
-export const FourNft: React.FC<{ image: string }> = ({ image }) => {
+export const FourNft: React.FC<{
+  image: string;
+  NFTArrayObjects: object;
+}> = ({ image, NFTArrayObjects }) => {
   const { width, height, fps } = useVideoConfig();
   const frame = useCurrentFrame();
 
@@ -27,12 +30,12 @@ export const FourNft: React.FC<{ image: string }> = ({ image }) => {
           transform: `scaleX(-1)`,
         }}
       >
-        <ScaleNft image={image} />
+        <ScaleNft image={image} NFTArrayObjects={NFTArrayObjects} />
       </AbsoluteFill>
       <AbsoluteFill
         style={{ width: width / 2, height: height / 2, left: width / 2 }}
       >
-        <ScaleNft image={image} />
+        <ScaleNft image={image} NFTArrayObjects={NFTArrayObjects} />
       </AbsoluteFill>
       <AbsoluteFill
         style={{
@@ -42,7 +45,7 @@ export const FourNft: React.FC<{ image: string }> = ({ image }) => {
           transform: "scale(-1)",
         }}
       >
-        <ScaleNft image={image} />
+        <ScaleNft image={image} NFTArrayObjects={NFTArrayObjects} />
       </AbsoluteFill>
       <AbsoluteFill
         style={{
@@ -53,7 +56,7 @@ export const FourNft: React.FC<{ image: string }> = ({ image }) => {
           transform: "scaleY(-1)",
         }}
       >
-        <ScaleNft image={image} />
+        <ScaleNft image={image} NFTArrayObjects={NFTArrayObjects} />
       </AbsoluteFill>
     </AbsoluteFill>
   );

@@ -5,11 +5,15 @@ import { Scene3 } from "./Scene3";
 import { Scene2Test } from "./Scene2Test";
 import { Scene1 } from "./Scene1";
 
-export const Main = ({ ranking, price, media, topNFT }) => {
+export const Main = ({ ranking, price, media, topNFT, NFTArrayObjects }) => {
   return (
     <>
       <Sequence from={0} durationInFrames={210}>
-        <Scene1 media={media}></Scene1>
+        <Scene1
+          media={media}
+          ranking={ranking}
+          NFTArrayObjects={NFTArrayObjects}
+        ></Scene1>
       </Sequence>
       <Sequence from={210} durationInFrames={210}>
         <Scene2Test ranking={ranking} price={price}></Scene2Test>

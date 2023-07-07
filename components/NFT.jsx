@@ -95,7 +95,7 @@ export default function Nft({}) {
               );
             })
           ) : (
-            <div>isLoading Value {`${isLoading}`}</div>
+            <div></div>
           )}
         </div>
       )}
@@ -110,6 +110,11 @@ export default function Nft({}) {
           >
             Load more
           </a>
+        </div>
+      )}
+
+      {top5NFT && (
+        <div>
           <a
             className={styles.button_black}
             onClick={() => {
@@ -144,6 +149,7 @@ export default function Nft({}) {
             `$${top5NFT[4]?.price}`,
           ]}
           topNFT={top5NFT[0]}
+          NFTArrayObjects={top5NFT}
         ></Video>
       )}
     </div>
