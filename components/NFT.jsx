@@ -30,7 +30,6 @@ export default function Nft({}) {
       }).then((res) => res.json());
       nftArray.push(...res.nfts);
       while (res.pageKey) {
-        nftArray.push(...res.nfts);
         res = await fetch(endpoint, {
           method: "POST",
           body: JSON.stringify({
@@ -40,6 +39,7 @@ export default function Nft({}) {
             excludeFilter: spamFilter,
           }),
         }).then((res) => res.json());
+        nftArray.push(...res.nfts);
       }
       setNfts(nftArray);
       setIsloading(false);
