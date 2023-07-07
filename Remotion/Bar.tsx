@@ -87,7 +87,7 @@ export const Bar: React.FC<Props> = ({
         endWidth={endWidth}
         color={color}
       />
-      <div style={{ width: 40 }} />
+      <div style={{ width: 18 }} />
       <div
         style={{
           opacity: labelProgress,

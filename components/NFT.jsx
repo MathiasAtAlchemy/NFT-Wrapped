@@ -16,9 +16,10 @@ export default function Nft({}) {
 
   const fetchNFTs = async (pagekey) => {
     if (!pageKey) setIsloading(true);
+    let nftArray = [];
     const endpoint = "/api/getNftsForOwner";
     try {
-      const res = await fetch(endpoint, {
+      let res = await fetch(endpoint, {
         method: "POST",
         body: JSON.stringify({
           address: address ? address : walletAddress,
@@ -27,20 +28,37 @@ export default function Nft({}) {
           excludeFilter: spamFilter,
         }),
       }).then((res) => res.json());
-      if (nfts?.length && pageKey) {
-        setNfts((prevState) => [...prevState, ...res.nfts]);
-      } else {
-        setNfts();
-        setNfts(res.nfts);
+      nftArray.push(...res.nfts);
+      while (res.pageKey) {
+        nftArray.push(...res.nfts);
+        res = await fetch(endpoint, {
+          method: "POST",
+          body: JSON.stringify({
+            address: address ? address : walletAddress,
+            pageKey: res.pageKey,
+            chain: chain,
+            excludeFilter: spamFilter,
+          }),
+        }).then((res) => res.json());
       }
-      if (res.pageKey) {
-        setPageKey(res.pageKey);
-      } else {
-        setPageKey();
-      }
-
+      setNfts(nftArray);
       setIsloading(false);
-      return res.nfts;
+      return nftArray;
+
+      // if (nfts?.length && pageKey) {
+      //   setNfts((prevState) => [...prevState, ...res.nfts]);
+      // } else {
+      //   setNfts();
+      //   setNfts(res.nfts);
+      // }
+      // if (res.pageKey) {
+      //   setPageKey(res.pageKey);
+      // } else {
+      //   setPageKey();
+      // }
+
+      // setIsloading(false);
+      // return res.nfts;
     } catch (e) {
       console.log(e);
     }
@@ -82,25 +100,51 @@ export default function Nft({}) {
         </label>
         <input type="submit" value="Submit" />
       </form>
-      {isLoading ? (
-        <div>No NFTs</div>
-      ) : (
-        <div className={styles.nft_text}>
-          {nfts?.length ? (
-            nfts.map((nft, index) => {
-              return (
-                <div key={index}>
-                  {nft.title} ---------- ${nft.price}
-                </div>
-              );
-            })
-          ) : (
-            <div></div>
-          )}
-        </div>
+      {isLoading ? <div>Loading...</div> : null}
+      {top5NFT?.length && (
+        <>
+          <Video
+            media={[
+              `${top5NFT[1]?.media}`,
+              `${top5NFT[2]?.media}`,
+              `${top5NFT[3]?.media}`,
+              `${top5NFT[4]?.media}`,
+            ]}
+            ranking={[
+              `${top5NFT[0]?.title}`,
+              `${top5NFT[1]?.title}`,
+              `${top5NFT[2]?.title}`,
+              `${top5NFT[3]?.title}`,
+              `${top5NFT[4]?.title}`,
+            ]}
+            price={[
+              `$${top5NFT[0]?.price}`,
+              `$${top5NFT[1]?.price}`,
+              `$${top5NFT[2]?.price}`,
+              `$${top5NFT[3]?.price}`,
+              `$${top5NFT[4]?.price}`,
+            ]}
+            topNFT={top5NFT[0]}
+            NFTArrayObjects={top5NFT}
+          ></Video>
+
+          <div className={styles.nft_text}>
+            {nfts?.length ? (
+              nfts.map((nft, index) => {
+                return (
+                  <div key={index}>
+                    {nft.title} ---------- ${nft.price}
+                  </div>
+                );
+              })
+            ) : (
+              <div></div>
+            )}
+          </div>
+        </>
       )}
 
-      {pageKey && nfts?.length && (
+      {/* {pageKey && nfts?.length && (
         <div>
           <a
             className={styles.button_black}
@@ -111,9 +155,9 @@ export default function Nft({}) {
             Load more
           </a>
         </div>
-      )}
+      )} */}
 
-      {top5NFT && (
+      {/* {top5NFT && (
         <div>
           <a
             className={styles.button_black}
@@ -122,36 +166,9 @@ export default function Nft({}) {
             }}
           >
             Get Prices
-          </a>
-        </div>
-      )}
-
-      {top5NFT?.length && (
-        <Video
-          media={[
-            `${top5NFT[1]?.media}`,
-            `${top5NFT[2]?.media}`,
-            `${top5NFT[3]?.media}`,
-            `${top5NFT[4]?.media}`,
-          ]}
-          ranking={[
-            `${top5NFT[0]?.title}`,
-            `${top5NFT[1]?.title}`,
-            `${top5NFT[2]?.title}`,
-            `${top5NFT[3]?.title}`,
-            `${top5NFT[4]?.title}`,
-          ]}
-          price={[
-            `$${top5NFT[0]?.price}`,
-            `$${top5NFT[1]?.price}`,
-            `$${top5NFT[2]?.price}`,
-            `$${top5NFT[3]?.price}`,
-            `$${top5NFT[4]?.price}`,
-          ]}
-          topNFT={top5NFT[0]}
-          NFTArrayObjects={top5NFT}
-        ></Video>
-      )}
+            </a>
+            </div>
+          )} */}
     </div>
   );
 }

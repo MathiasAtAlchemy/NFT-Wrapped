@@ -61,35 +61,35 @@ export const Scene2Test: React.FC<{
           endWidth={width / 2}
           rank={1}
           title={ranking[0]}
-          price={price[0]}
+          price={price[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
         />
         <Bar
           color="linear-gradient(#A7CAFF,#B25FF3)"
           endWidth={width / 2 - 40}
           rank={2}
           title={ranking[1]}
-          price={price[1]}
+          price={price[1].replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
         />
         <Bar
           color="linear-gradient(#FC9EB4,#FFC5A4)"
           endWidth={width / 2 - 80}
           rank={3}
           title={ranking[2]}
-          price={price[2]}
+          price={price[2].replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
         />
         <Bar
           color="linear-gradient(#73FCC2,#50D5FF)"
           endWidth={width / 2 - 120}
           rank={4}
           title={ranking[3]}
-          price={price[3]}
+          price={price[3].replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
         />
         <Bar
           color="linear-gradient(#FFD27C,#FFAA8F)"
           endWidth={width / 2 - 160}
           rank={5}
           title={ranking[4]}
-          price={price[4]}
+          price={price[4].replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
         />
       </AbsoluteFill>
     </AbsoluteFill>
