@@ -44,21 +44,6 @@ export default function Nft({}) {
       setNfts(nftArray);
       setIsloading(false);
       return nftArray;
-
-      // if (nfts?.length && pageKey) {
-      //   setNfts((prevState) => [...prevState, ...res.nfts]);
-      // } else {
-      //   setNfts();
-      //   setNfts(res.nfts);
-      // }
-      // if (res.pageKey) {
-      //   setPageKey(res.pageKey);
-      // } else {
-      //   setPageKey();
-      // }
-
-      // setIsloading(false);
-      // return res.nfts;
     } catch (e) {
       console.log(e);
     }
@@ -143,44 +128,6 @@ export default function Nft({}) {
           </div>
         </>
       )}
-
-      {/* {pageKey && nfts?.length && (
-        <div>
-          <a
-            className={styles.button_black}
-            onClick={() => {
-              fetchNFTs(pageKey);
-            }}
-          >
-            Load more
-          </a>
-        </div>
-      )} */}
-
-      {/* {top5NFT && (
-        <div>
-          <a
-            className={styles.button_black}
-            onClick={() => {
-              getPrices(nfts);
-            }}
-          >
-            Get Prices
-            </a>
-            </div>
-          )} */}
     </div>
   );
 }
-// contract: contract.address,
-//         symbol: contract.symbol,
-//         collectionName: contract.openSea?.collectionName,
-//         media: media[0]?.gateway
-//           ? media[0]?.gateway
-//           : "https://via.placeholder.com/500",
-//         verified: contract.openSea?.safelistRequestStatus,
-//         tokenType,
-//         tokenId,
-//         title,
-//         description,
-//         format: media[0]?.format ? media[0]?.format : "png",
